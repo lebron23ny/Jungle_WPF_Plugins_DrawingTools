@@ -1,0 +1,80 @@
+﻿<tsd:PluginWindowBase 
+        x:Class="Jungle_WPF_Plugins_DrawingTools.NeighborAxis.MainWindow_NeighborAxis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jungle_WPF_Plugins_DrawingTools.NeighborAxis"
+        xmlns:tsd="clr-namespace:Tekla.Structures.Dialog;assembly=Tekla.Structures.Dialog"
+        xmlns:UIControls="clr-namespace:Tekla.Structures.Dialog.UIControls;assembly=Tekla.Structures.Dialog" 
+        mc:Ignorable="d"
+        Title="MainWindow_NeighborAxis" Height="440" Width="600"  
+    WindowStyle="None" ResizeMode="NoResize">
+    <tsd:PluginWindowBase.DataContext>
+        <local:MainWindowViewModelNA></local:MainWindowViewModelNA>
+    </tsd:PluginWindowBase.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Black" BorderThickness="2">
+            <StackPanel Background="#FFE8EFEF" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown" >
+                <Image Source="/Jungle_WPF_Plugins_DrawingTools;component/NeighborAxis/Logo.png" Height="70" Cursor="Hand" />
+                <TextBlock Margin="00,0,0,0"  VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center"
+               Width="400" Foreground="Black">
+                <Hyperlink NavigateUri="https://www.mekhanobr.com/" RequestNavigate="Hyperlink_RequestNavigate">
+                    mekhanobr.com</Hyperlink>
+                </TextBlock>
+
+            </StackPanel>
+
+        </Border>
+
+        <Canvas Grid.Row="0" HorizontalAlignment="Right" 
+        VerticalAlignment="Center">
+            <Image Canvas.Right="35" Canvas.Bottom="-3" Width="18" Height="18" Source="/Jungle_WPF_Plugins_DrawingTools;component/NeighborAxis/close.png"/>
+            <Button Canvas.Right="20" Canvas.Bottom="3" Width="30" Background="Transparent" BorderBrush="Transparent" Height="30" x:Name="btn_close" 
+         Click="btn_close_Click" />
+        </Canvas>
+
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <UIControls:WpfSaveLoad Grid.Row="1"/>
+        </Border>
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <StackPanel Background="White" >
+                <Grid>
+                    <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <UIControls:WpfFilterCheckBox AttributeName="IndexType"/>
+                        <ComboBox x:Name="cmbType" Height="240" 
+                              HorizontalAlignment="Center" Width="450" 
+                              SelectedIndex="{Binding IndexType, Mode=TwoWay}">
+                            <ComboBoxItem Tag="0" IsSelected="True">
+                                <Image Source="Images/1.png"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem Tag="1" >
+                                <Image Source="Images/2.png"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem Tag="2">
+                                <Image Source="Images/3.png"/>
+                            </ComboBoxItem>
+                        </ComboBox>
+
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <UIControls:WpfOkApplyModifyGetOnOffCancel VerticalAlignment="Center" ApplyClicked="WpfOkApplyModifyGetOnOffCancel_ApplyClicked" CancelClicked="WpfOkApplyModifyGetOnOffCancel_CancelClicked" GetClicked="WpfOkApplyModifyGetOnOffCancel_GetClicked" ModifyClicked="WpfOkApplyModifyGetOnOffCancel_ModifyClicked" OkClicked="WpfOkApplyModifyGetOnOffCancel_OkClicked" OnOffClicked="WpfOkApplyModifyGetOnOffCancel_OnOffClicked"/>
+        </Border>
+
+
+
+
+
+
+    </Grid>
+</tsd:PluginWindowBase>

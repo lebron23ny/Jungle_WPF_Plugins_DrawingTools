@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E88FB8B5-BFFF-4284-9A99-3BD94223E81D}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Jungle_WPF_Plugins_DrawingTools</RootNamespace>
+    <AssemblyName>Jungle_WPF_Plugins_DrawingTools</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PropertyChanged, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.4.1.0\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Tekla.Structures, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Datatype, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Datatype.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Dialog, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Drawing, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\бибилиотеки\2021\Tekla.Structures.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Plugins, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="FragmentSymbol\DrawingPlugin_FragmentSymbol.cs" />
+    <Compile Include="FragmentSymbol\Extension\Tools.cs" />
+    <Compile Include="FragmentSymbol\MainWindowViewModel.cs" />
+    <Compile Include="FragmentSymbol\MainWindow_FragmentSymbol.xaml.cs">
+      <DependentUpon>MainWindow_FragmentSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NeighborAxis\Classes\DrawBottomXLabel.cs" />
+    <Compile Include="NeighborAxis\Classes\Drawer.cs" />
+    <Compile Include="NeighborAxis\Classes\DrawLeftYLabel.cs" />
+    <Compile Include="NeighborAxis\Classes\DrawRightYLabel.cs" />
+    <Compile Include="NeighborAxis\Classes\DrawUpperXLabel.cs" />
+    <Compile Include="NeighborAxis\Classes\enumPositionDraw.cs" />
+    <Compile Include="NeighborAxis\Classes\Extensions.cs" />
+    <Compile Include="NeighborAxis\Classes\IDrawLabel.cs" />
+    <Compile Include="NeighborAxis\Classes\NeighborLabelDrawer.cs" />
+    <Compile Include="NeighborAxis\DrawingPlugin_NeighborAxis.cs" />
+    <Compile Include="NeighborAxis\MainWindowViewModelNA.cs" />
+    <Compile Include="NeighborAxis\MainWindow_NeighborAxis.xaml.cs">
+      <DependentUpon>MainWindow_NeighborAxis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OpeningSymbol\DrawingPlugin_OpeningSymbol.cs" />
+    <Compile Include="OpeningSymbol\MainWindowViewModelOS.cs" />
+    <Compile Include="OpeningSymbol\MainWindow_OpeningSymbol.xaml.cs">
+      <DependentUpon>MainWindow_OpeningSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="FragmentSymbol\MainWindow_FragmentSymbol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NeighborAxis\MainWindow_NeighborAxis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OpeningSymbol\MainWindow_OpeningSymbol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OpeningSymbol\Images\left_bottom.png" />
+    <Resource Include="OpeningSymbol\Images\left_top.png" />
+    <Resource Include="OpeningSymbol\Images\right_bottom.png" />
+    <Resource Include="OpeningSymbol\Images\right_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_ImagesTitleBar\close.png" />
+    <Resource Include="_ImagesTitleBar\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OpeningSymbol\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OpeningSymbol\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FragmentSymbol\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FragmentSymbol\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NeighborAxis\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NeighborAxis\Images\1.png" />
+    <Resource Include="NeighborAxis\Images\2.png" />
+    <Resource Include="NeighborAxis\Images\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NeighborAxis\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.4\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.6.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "C:\TeklaStructures\2021.0\Environments\Mekhanobr\Firm_Mekhanobr\Extensions\Jungle_WPF_Plugins_DrawingTools" /R/Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>
