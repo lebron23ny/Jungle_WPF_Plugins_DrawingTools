@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Jungle_User_Controls">
+      <HintPath>..\..\Test_MyUserControl\Jungle_User_Controls\bin\Debug\Jungle_User_Controls.dll</HintPath>
+    </Reference>
     <Reference Include="PropertyChanged, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.4.1.0\lib\net40\PropertyChanged.dll</HintPath>
     </Reference>
@@ -79,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="DimensionToAxis\DrawingPlugin_DimToAxis.cs" />
+    <Compile Include="DimensionToAxis\MainWindowViewModelDTA.cs" />
+    <Compile Include="DimensionToAxis\MainWindow_DimToAxis.xaml.cs">
+      <DependentUpon>MainWindow_DimToAxis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DimensionToAxis\MyGrid.cs" />
     <Compile Include="FragmentSymbol\DrawingPlugin_FragmentSymbol.cs" />
     <Compile Include="FragmentSymbol\Extension\Tools.cs" />
     <Compile Include="FragmentSymbol\MainWindowViewModel.cs" />
@@ -128,6 +137,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DimensionToAxis\MainWindow_DimToAxis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FragmentSymbol\MainWindow_FragmentSymbol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

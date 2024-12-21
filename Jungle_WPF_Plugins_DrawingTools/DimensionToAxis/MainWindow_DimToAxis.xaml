@@ -1,0 +1,117 @@
+﻿<tsd:PluginWindowBase x:Class="Jungle_WPF_Plugins_DrawingTools.DimensionToAxis.MainWindow_DimToAxis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jungle_WPF_Plugins_DrawingTools.DimensionToAxis"
+        xmlns:tsd="clr-namespace:Tekla.Structures.Dialog;assembly=Tekla.Structures.Dialog"
+        xmlns:UIControls="clr-namespace:Tekla.Structures.Dialog.UIControls;assembly=Tekla.Structures.Dialog"
+        xmlns:JUC ="clr-namespace:Jungle_User_Controls;assembly=Jungle_User_Controls"
+        mc:Ignorable="d"
+                      WindowStyle="None" ResizeMode="NoResize"
+        Title="MainWindow_DimToAxis" Height="450" Width="800">
+    <tsd:PluginWindowBase.DataContext>
+        <local:MainWindowViewModelDTA/>
+    </tsd:PluginWindowBase.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <JUC:Mekhanobr_Title_bar Grid.Row="0"/>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <UIControls:WpfSaveLoad x:Name="wpf_save_load" 
+                                 />
+        </Border>
+        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <UIControls:WpfOkApplyModifyGetOnOffCancel 
+                ApplyClicked="WpfOkApplyModifyGetOnOffCancel_ApplyClicked" 
+                CancelClicked="WpfOkApplyModifyGetOnOffCancel_CancelClicked" 
+                GetClicked="WpfOkApplyModifyGetOnOffCancel_GetClicked" 
+                ModifyClicked="WpfOkApplyModifyGetOnOffCancel_ModifyClicked" 
+                OkClicked="WpfOkApplyModifyGetOnOffCancel_OkClicked" 
+                OnOffClicked="WpfOkApplyModifyGetOnOffCancel_OnOffClicked"
+                />
+        </Border>
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="2 0 2 2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <UIControls:WpfFilterCheckBox Grid.Row="0" Grid.Column="0"
+                                              VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center"
+                                              AttributeName="IndexType"
+                                              />
+                <TextBlock Grid.Row="0" Grid.Column="1" 
+                           Text="Режим"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ComboBox Grid.Row="0" Grid.Column="2"
+                          SelectedIndex="{Binding IndexType, Mode=TwoWay}">
+                    <ComboBoxItem IsSelected="True" Content="Предыдущий и следующий"
+                                  VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBoxItem Content="Предыдущий"/>
+                    <ComboBoxItem Content="Следующий"/>
+                </ComboBox>
+
+
+                <UIControls:WpfFilterCheckBox Grid.Row="1" Grid.Column="0"
+                                              VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center"
+                                                AttributeName="DistanceDim"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" 
+                           Text="Размер" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="2"
+                         Text="{Binding DistanceDim}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"/>
+
+                <UIControls:WpfFilterCheckBox Grid.Row="2" Grid.Column="0"
+                                              AttributeName="NameDimAttr"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="Аттрибут размеров"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+
+                <TextBox Grid.Row="2" Grid.Column="2"
+                         Text="{Binding NameDimAttr}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"/>
+
+                <UIControls:WpfFilterCheckBox Grid.Row="3" Grid.Column="0"
+                                              AttributeName="NameTextAttr"
+                                              HorizontalAlignment="Center"
+                                              VerticalContentAlignment="Center"/>
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="Атрибут текста"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           />
+
+                <TextBox Grid.Row="3" Grid.Column="2"
+                         Text="{Binding NameTextAttr}"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+
+
+
+
+            </Grid>
+            
+        </Border>
+    </Grid>
+</tsd:PluginWindowBase>

@@ -17,3 +17,8 @@ V1
 2:dataViewModel,o
 2:get_o_,n
 2:set_n_,zW
+2:DrawingPlugin_DimToAxis,T1
+2:DefineInput,W
+2:Run,F
+2:Input,N
+2:DimensionToAxis,I
