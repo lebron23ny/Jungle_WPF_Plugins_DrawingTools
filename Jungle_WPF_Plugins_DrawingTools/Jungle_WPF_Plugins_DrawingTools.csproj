@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jungle_User_Controls">
-      <HintPath>..\..\Test_MyUserControl\Jungle_User_Controls\bin\Debug\Jungle_User_Controls.dll</HintPath>
-    </Reference>
     <Reference Include="PropertyChanged, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.4.1.0\lib\net40\PropertyChanged.dll</HintPath>
     </Reference>
@@ -130,6 +127,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Jungle_WPF_Plugins_DrawingTools.ail">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -203,6 +203,7 @@
     <Error Condition="!Exists('..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.4.1.0\build\PropertyChanged.Fody.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "C:\TeklaStructures\2021.0\Environments\Mekhanobr\Firm_Mekhanobr\Extensions\Jungle_WPF_Plugins_DrawingTools" /R/Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "C:\TeklaStructures\2021.0\Environments\Mekhanobr\Firm_Mekhanobr\Extensions\Jungle_WPF_Plugins_DrawingTools" /R/Y
+xcopy "$(TargetDir)"$(TargetName).ail "C:\TeklaStructures\2021.0\messages\DotAppsStrings\" /R/Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

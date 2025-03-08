@@ -1,0 +1,113 @@
+﻿string_utf8 albl_NamePlugin_DimToAxis
+{
+	entry = ("enu", "Dimension to axis");
+	entry = ("rus", "Расстояние до оси");
+};
+
+string_utf8 albl_Mode_DimToAxis
+{
+	entry = ("enu", "Mode");
+	entry = ("rus", "Режим");
+};
+
+string_utf8 albl_Mode1_DimToAxis
+{
+	entry = ("enu", "Last and next");
+	entry = ("rus", "Предыдущий и следующий");
+};
+
+string_utf8 albl_Mode2_DimToAxis
+{
+	entry = ("enu", "Last");
+	entry = ("rus", "Предыдущий");
+};
+
+string_utf8 albl_Mode3_DimToAxis
+{
+	entry = ("enu", "Next");
+	entry = ("rus", "Следующий");
+};
+
+string_utf8 albl_Size_DimToAxis
+{
+	entry = ("enu", "Size");
+	entry = ("rus", "Размер");
+};
+
+string_utf8 albl_AttrSize_DimToAxis
+{
+	entry = ("enu", "Size attribute");
+	entry = ("rus", "Атрибут размеров");
+};
+
+string_utf8 albl_AttrText_DimToAxis
+{
+	entry = ("enu", "Text attribute");
+	entry = ("rus", "Атрибут текста");
+};
+
+string_utf8 albl_LengthAxis_DimToAxis
+{
+	entry = ("enu", "Length neighbor axis");
+	entry = ("rus", "Длина вспомогательной оси");
+};
+
+string_utf8 albl_NamePlugin_FragmentSymbol
+{
+	entry = ("enu", "Fragment symbol");
+	entry = ("rus", "Символ фрагмента");
+};
+
+string_utf8 albl_HeightText_FragmentSymbol
+{
+	entry = ("enu", "Height text");
+	entry = ("rus", "Высота текста");
+};
+
+string_utf8 albl_DimC_FragmentSymbol
+{
+	entry = ("enu", "Dimension c");
+	entry = ("rus", "Размер с");
+};
+
+string_utf8 albl_Content_FragmentSymbol
+{
+	entry = ("enu", "Content");
+	entry = ("rus", "Содержимое");
+};
+
+string_utf8 albl_Expand_FragmentSymbol
+{
+	entry = ("enu", "Expand");
+	entry = ("rus", "Развернуть");
+};
+
+string_utf8 albl_NamePlugin_NeighborAxis
+{
+	entry = ("enu", "Neighbor Axis");
+	entry = ("rus", "Соседние оси");
+};
+
+string_utf8 albl_NamePlugin_OpeningSymbol
+{
+	entry = ("enu", "Symbol opening");
+	entry = ("rus", "Символ проема");
+};
+
+string_utf8 albl_DrawFrame_OpeningSymbol
+{
+	entry = ("enu", "Draw a frame?");
+	entry = ("rus", "Рисовать рамку?");
+};
+
+string_utf8 albl_DrawFrameNo_OpeningSymbol
+{
+	entry = ("enu", "No");
+	entry = ("rus", "Нет");
+};
+
+string_utf8 albl_DrawFrameYes_OpeningSymbol
+{
+	entry = ("enu", "Yes");
+	entry = ("rus", "Да");
+};

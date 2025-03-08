@@ -50,27 +50,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.FragmentSymbol
         {
             this.ToggleSelection();
         }
-
-
-
-        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-
-
-
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
-
-        private void btn_close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void btn_Reverse_Click(object sender, RoutedEventArgs e)
         {

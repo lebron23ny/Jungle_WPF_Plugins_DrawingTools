@@ -9,48 +9,27 @@
         xmlns:tsd="clr-namespace:Tekla.Structures.Dialog;assembly=Tekla.Structures.Dialog"
         xmlns:UIControls="clr-namespace:Tekla.Structures.Dialog.UIControls;assembly=Tekla.Structures.Dialog"
         mc:Ignorable="d"
-        Title="MainWindow_OpeningSymbol" Height="520" Width="570"
-    WindowStyle="None" ResizeMode="NoResize">
+        Title="{tsd:Loc albl_NamePlugin_OpeningSymbol}" Height="520" Width="570"
+    ResizeMode="NoResize">
     <tsd:PluginWindowBase.DataContext>
         <local:MainWindowViewModelOS></local:MainWindowViewModelOS>
     </tsd:PluginWindowBase.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" BorderThickness="2">
-            <StackPanel Background="#FFE8EFEF" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown" >
-                <Image Source="/Jungle_WPF_Plugins_DrawingTools;component/OpeningSymbol/Logo.png" Height="70" Cursor="Hand" />
-                <TextBlock
-                KeyboardNavigation.TabNavigation="None"
-                KeyboardNavigation.IsTabStop="False"
-                Margin="00,0,0,0"  VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center"
-            Width="400" Foreground="Black">
-        <Hyperlink NavigateUri="https://www.mekhanobr.com/" RequestNavigate="Hyperlink_RequestNavigate">
-            mekhanobr.com</Hyperlink>
-                </TextBlock>
-            </StackPanel>
-        </Border>
-        <Canvas Grid.Row="0" HorizontalAlignment="Right" 
-        VerticalAlignment="Center">
-            <Image Canvas.Right="35" Canvas.Bottom="-3" Width="18" Height="18" 
-                   Source="/Jungle_WPF_Plugins_DrawingTools;component/OpeningSymbol/close.png"/>
-            <Button KeyboardNavigation.TabNavigation="None"
-                KeyboardNavigation.IsTabStop="False"
-                Canvas.Right="20" Canvas.Bottom="3" Width="30" Background="Transparent" BorderBrush="Transparent" Height="30" x:Name="btn_close" 
-        Click="btn_close_Click" />
-        </Canvas>
-        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2 0 2 2">
+        
+        
             <UIControls:WpfSaveLoad 
             KeyboardNavigation.TabNavigation="None"
             KeyboardNavigation.IsTabStop="False"
             Grid.Row="1"/>
-        </Border>
-        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="2 0 2 2">
-            <Grid>
+        
+        
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="1*"/>
@@ -84,21 +63,21 @@
                 KeyboardNavigation.IsTabStop="False"
                 VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" AttributeName="IsDrawFrameIndex"/>
 
-                <TextBlock Grid.Column="1" Grid.Row="0" Text="Рисовать рамку?"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"
+                           Text="{tsd:Loc albl_DrawFrame_OpeningSymbol}"/>
                 <ComboBox Margin="0 0 30 0" Grid.Column="1" 
                       VerticalContentAlignment="Center" Grid.Row="1" 
                       SelectedIndex="{Binding IsDrawFrameIndex, Mode=TwoWay}">
-                    <ComboBoxItem IsSelected="True">
-                        Нет
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Да
-                    </ComboBoxItem>
-                </ComboBox>
+                <ComboBoxItem IsSelected="True" Content="{tsd:Loc albl_DrawFrameNo_OpeningSymbol}"/>
+
+                <ComboBoxItem Content="{tsd:Loc albl_DrawFrameYes_OpeningSymbol}"/>
+
+            </ComboBox>
             </Grid>
-        </Border>
-        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="2 0 2 2">
+        
+        
             <UIControls:WpfOkApplyModifyGetOnOffCancel 
+            Grid.Row="3"
             KeyboardNavigation.TabNavigation="None"
             KeyboardNavigation.IsTabStop="False"
             VerticalAlignment="Center" ApplyClicked="WpfOkApplyModifyGetOnOffCancel_ApplyClicked" 
@@ -107,6 +86,6 @@
             ModifyClicked="WpfOkApplyModifyGetOnOffCancel_ModifyClicked" 
             OkClicked="WpfOkApplyModifyGetOnOffCancel_OkClicked" 
             OnOffClicked="WpfOkApplyModifyGetOnOffCancel_OnOffClicked"/>
-        </Border>
+        
     </Grid>
 </tsd:PluginWindowBase>

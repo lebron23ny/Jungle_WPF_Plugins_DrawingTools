@@ -19,5 +19,8 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
 
         [StructuresDialog("NameTextAttr", typeof(TD.String))]
         public string NameTextAttr { get; set; } = "standard";
+
+        [StructuresDialog("LengthAxis", typeof(TD.Double))]
+        public double LengthAxis { get; set; } = 500.0;
     }
 }

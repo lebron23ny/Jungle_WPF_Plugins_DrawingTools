@@ -6,7 +6,8 @@ using System.Linq;
 using TSM = Tekla.Structures.Model;
 using TSG = Tekla.Structures.Geometry3d;
 using TSD = Tekla.Structures.Drawing;
-using Tekla.Structures.Drawing;
+
+
 
 namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
 {
@@ -101,7 +102,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
         public void DrawAxis()
         {
             TSD.LineTypeAttributes lineTypeAttr = Tekla_Grid_Drawing.Attributes.Line;
-            lineTypeAttr.Color = DrawingColors.Green;
+            //lineTypeAttr.Color = DrawingColors.Green;
 
             TSD.ArrowheadAttributes arrowheadAttributes = new TSD.ArrowheadAttributes(TSD.ArrowheadPositions.None, TSD.ArrowheadTypes.NoArrow, 0, 0);
 
@@ -115,7 +116,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
             axis.Insert();
         }
 
-        public void DrawNextAxis(double distance, string nameAttrDim, string nameTextAttr)
+        public void DrawNextAxis(double distance, string nameAttrDim, string nameTextAttr, double lengthAxis)
         {
 
             if (Orientation != Orientation.none)
@@ -145,8 +146,10 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
                 lineAttributes.Line = lineTypeAttr;
                 lineAttributes.Arrowhead = arrowheadAttributes;
 
-                TSD.Line axis = new TSD.Line(View, pt1_Display, pt2_Display, lineAttributes);
-                axis.Insert();
+                //TSD.Line axis = new TSD.Line(View, pt1_Display, pt2_Display, lineAttributes);
+                //axis.Insert();
+
+                InsertAxis(View, pt1_Display, pt2_Display, lineAttributes, lengthAxis);
 
 
 
@@ -162,8 +165,23 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
             }
         }
 
+        private void InsertAxis(TSD.View view, TSG.Point pt1_Display, TSG.Point pt2_Display, TSD.Line.LineAttributes lineAttributes, double lengthAxis)
+        {
+            double lengthVector = TSG.Distance.PointToPoint(pt2_Display, pt1_Display);
+            if(lengthAxis == 0)
+                lengthAxis = lengthVector;
+            TSG.Point middelePoint = new TSG.Point(
+                pt1_Display.X + (pt2_Display.X - pt1_Display.X) * (lengthVector - lengthAxis) / lengthVector,
+                pt1_Display.Y + (pt2_Display.Y - pt1_Display.Y) * (lengthVector - lengthAxis) / lengthVector,
+                pt1_Display.Z + (pt2_Display.Z - pt1_Display.Z) * (lengthVector - lengthAxis) / lengthVector
+                );
 
-        public void DrawPreviousAxis(double distance, string nameAttrDim, string nameTextAttr)
+
+            TSD.Line axis = new TSD.Line(View, middelePoint, pt2_Display, lineAttributes);
+            axis.Insert(); ;
+        }
+
+        public void DrawPreviousAxis(double distance, string nameAttrDim, string nameTextAttr, double lengthAxis)
         {
             if (Orientation != Orientation.none)
             {
@@ -191,8 +209,11 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
                 lineAttributes.Line = lineTypeAttr;
                 lineAttributes.Arrowhead = arrowheadAttributes;
 
-                TSD.Line axis = new TSD.Line(View, pt1_Display, pt2_Display, lineAttributes);
-                axis.Insert();
+                //TSD.Line axis = new TSD.Line(View, pt1_Display, pt2_Display, lineAttributes);
+                //axis.Insert();
+                InsertAxis(View, pt1_Display, pt2_Display, lineAttributes, lengthAxis);
+
+
                 InsertFrame(pt1_Display, pt2_Display, PreviousMark);
                 InsertDimension(SecondPoint, pt2_Display, nameAttrDim);
 
@@ -507,7 +528,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
             TSD.Text.TextAttributes textAttributes = new TSD.Text.TextAttributes(nameTextAttr);
             double scale = View.Attributes.Scale;
             double gap = 1;
-            TSD.Text textTemp = new Text(View, new TSG.Point(0, 0, 0), valueDimension, textAttributes);
+            TSD.Text textTemp = new TSD.Text(View, new TSG.Point(0, 0, 0), valueDimension, textAttributes);
             textTemp.Insert();
 
             var sizeText = textTemp.GetAxisAlignedBoundingBox();
