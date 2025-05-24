@@ -24,9 +24,9 @@
         
         
             <UIControls:WpfSaveLoad 
-            KeyboardNavigation.TabNavigation="None"
-            KeyboardNavigation.IsTabStop="False"
-            Grid.Row="1"/>
+                KeyboardNavigation.TabNavigation="None"
+                KeyboardNavigation.IsTabStop="False"
+                Grid.Row="1"/>
         
         
             <Grid Grid.Row="2">
@@ -38,11 +38,14 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
                 <UIControls:WpfFilterCheckBox 
-                KeyboardNavigation.TabNavigation="None"
-                KeyboardNavigation.IsTabStop="False"
-                VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" AttributeName="IndexType"/>
+                        KeyboardNavigation.TabNavigation="None"
+                        KeyboardNavigation.IsTabStop="False"
+                        VerticalAlignment="Center" Grid.Column="0" 
+                        Grid.Row="2" AttributeName="IndexType"/>
                 <ComboBox Margin="0 0 30 0" Grid.Column="1" Grid.Row="2" 
                           SelectedIndex="{Binding IndexType, Mode=TwoWay}">
                     <ComboBoxItem HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="0" >
@@ -73,7 +76,26 @@
                 <ComboBoxItem Content="{tsd:Loc albl_DrawFrameYes_OpeningSymbol}"/>
 
             </ComboBox>
-            </Grid>
+
+
+            <UIControls:WpfFilterCheckBox 
+                KeyboardNavigation.TabNavigation="None"
+                KeyboardNavigation.IsTabStop="False"
+                VerticalAlignment="Center" Grid.Column="0" 
+                Grid.Row="3" AttributeName="PolygonAttr"/>
+
+            <TextBox Grid.Column="1" Grid.Row="3"
+                           Text="{Binding PolygonAttr}"/>
+
+            <UIControls:WpfFilterCheckBox 
+                KeyboardNavigation.TabNavigation="None"
+                KeyboardNavigation.IsTabStop="False"
+                VerticalAlignment="Center" Grid.Column="0" 
+                Grid.Row="4" AttributeName="RecAttr"/>
+
+            <TextBox Grid.Column="1" Grid.Row="4"
+                           Text="{Binding RecAttr}"/>
+        </Grid>
         
         
             <UIControls:WpfOkApplyModifyGetOnOffCancel 

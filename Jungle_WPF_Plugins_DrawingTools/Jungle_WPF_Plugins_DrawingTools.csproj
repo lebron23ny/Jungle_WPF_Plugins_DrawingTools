@@ -60,10 +60,12 @@
     <Reference Include="Tekla.Structures.Dialog, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Dialog.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Tekla.Structures.Drawing, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\бибилиотеки\2021\Tekla.Structures.Drawing.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Tekla.Structures.Model, Version=2021.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -162,10 +164,6 @@
     <Resource Include="OpeningSymbol\Images\left_top.png" />
     <Resource Include="OpeningSymbol\Images\right_bottom.png" />
     <Resource Include="OpeningSymbol\Images\right_top.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="_ImagesTitleBar\close.png" />
-    <Resource Include="_ImagesTitleBar\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="OpeningSymbol\Logo.png" />

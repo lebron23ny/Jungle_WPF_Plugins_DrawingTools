@@ -15,6 +15,12 @@ namespace Jungle_WPF_Plugins_DrawingTools.OpeningSymbol
 
         [StructuresField("IsDrawFrameIndex")]
         public int IsDrawFrameIndex;
+
+        [StructuresField("PolygonAttr")]
+        public string PolygonAttr;
+
+        [StructuresField("RecAttr")]
+        public string RecAttr;
     }
 
     [Plugin("МИ_Символ_проема")]
@@ -62,10 +68,15 @@ namespace Jungle_WPF_Plugins_DrawingTools.OpeningSymbol
                     indexType = 0;
                 if (isDrawFrameIndex != 0 && isDrawFrameIndex != 1)
                     isDrawFrameIndex = 0;
+
                 enumOrintationSymbol orintationSymbol = (enumOrintationSymbol)indexType;
                 enumDrawFrame isDrawFrame = (enumDrawFrame)isDrawFrameIndex;
+
+                string polygonAttr = Data.PolygonAttr;
+                string recAttr = Data.RecAttr;
                 var drawing = DrawingHandler.GetActiveDrawing();
-                DrawSymbol(Input, orintationSymbol, isDrawFrame);
+
+                DrawSymbol(Input, orintationSymbol, isDrawFrame, polygonAttr, recAttr);
 
                 drawing.CommitChanges();
             }
@@ -76,7 +87,8 @@ namespace Jungle_WPF_Plugins_DrawingTools.OpeningSymbol
             return true;
         }
 
-        private void DrawSymbol(List<InputDefinition> Input, enumOrintationSymbol orintationSymbol, enumDrawFrame isDrawFrame)
+        private void DrawSymbol(List<InputDefinition> Input, enumOrintationSymbol orintationSymbol, enumDrawFrame isDrawFrame,
+            string polygonAttr, string recAttr)
         {
             TSD.ViewBase view = TSDT.InputDefinitionFactory.GetView(Input[0]) as TSD.ViewBase;
             TSG.Point firstPoint1 = TSDT.InputDefinitionFactory.GetPoint(Input[0]) as TSG.Point;
@@ -99,7 +111,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.OpeningSymbol
             if (isDrawFrame == enumDrawFrame.yes)
             {
                 TSD.Rectangle.RectangleAttributes rectangleAttributes =
-                    new TSD.Rectangle.RectangleAttributes("МИ_Символ_проема");
+                    new TSD.Rectangle.RectangleAttributes(recAttr);
                 TSD.Rectangle rectangle = new TSD.Rectangle(view,
                     firstPoint, secondPoint, rectangleAttributes);
                 rectangle.Insert();
@@ -150,7 +162,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.OpeningSymbol
                 list.Add(middlePoint);
             }
             TSD.Polygon.PolygonAttributes polygonAttributes =
-                new TSD.Polygon.PolygonAttributes("МИ_Символ_проема");
+                new TSD.Polygon.PolygonAttributes(polygonAttr);
             TSD.Polygon polygon = new TSD.Polygon(view, list, polygonAttributes);
             polygon.Insert();
         }
