@@ -99,6 +99,78 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
 
         }
 
+        private void SetMarkPoint(double value, List<double> Coords, List<string> Labels)
+        {
+            if (value < Coords[0])
+            {
+                ModePoint = ModePoint.Left;
+                PreviousMark = string.Empty;
+                PreviousDistance = 0;
+                NextMark = Labels.First();
+                NextDistance = Coords.First() - value;
+                CurrentMark = string.Empty;
+
+                return;
+            }
+            if (value > Coords[Coords.Count - 1])
+            {
+                ModePoint = ModePoint.Right;
+                PreviousMark = Labels[Coords.Count - 1];
+                PreviousDistance = value - Coords[Coords.Count - 1];
+                NextMark = string.Empty;
+                NextDistance = 0;
+                CurrentMark = string.Empty;
+                return;
+            }
+            for (int i = 0; i <= Coords.Count - 1; i++)
+            {
+                if (value == Coords[i])
+                {
+                    ModePoint = ModePoint.Border;
+                    if (i == 0)
+                    {
+                        PreviousMark = string.Empty;
+                        PreviousDistance = 0;
+
+                        NextMark = Labels[1];
+                        NextDistance = Coords[1] - value;
+
+                        CurrentMark = Labels[0];
+                        return;
+                    }
+                    else if (i == Coords.Count - 1)
+                    {
+                        PreviousMark = Labels[Coords.Count - 2];
+                        PreviousDistance = value - Coords[Coords.Count - 2];
+
+                        CurrentMark = Labels[Coords.Count - 1];
+                        NextMark = string.Empty;
+                        NextDistance = 0;
+                        return;
+                    }
+                    else
+                    {
+                        PreviousMark = Labels[i - 1];
+                        PreviousDistance = value - Coords[i - 1];
+                        NextMark = Labels[i + 1];
+                        NextDistance = Coords[i + 1] - value;
+                        CurrentMark = Labels[i];
+                        return;
+                    }
+                }
+                else if (value > Coords[i] && value < Coords[i + 1])
+                {
+                    ModePoint = ModePoint.BetweenBorder;
+                    PreviousMark = Labels[i];
+                    PreviousDistance = value - Coords[i];
+                    NextMark = Labels[i + 1];
+                    NextDistance = Coords[i + 1] - value;
+                    return;
+                }
+            }
+
+        }
+
         public void DrawAxis()
         {
             TSD.LineTypeAttributes lineTypeAttr = Tekla_Grid_Drawing.Attributes.Line;
@@ -438,77 +510,7 @@ namespace Jungle_WPF_Plugins_DrawingTools.DimensionToAxis
 
         }
 
-        private void SetMarkPoint(double value, List<double> Coords, List<string> Labels)
-        {
-            if (value < Coords[0])
-            {
-                ModePoint = ModePoint.Left;
-                PreviousMark = string.Empty;
-                PreviousDistance = 0;
-                NextMark = Labels.First();
-                NextDistance = Coords.First() - value;
-                CurrentMark = string.Empty;
-
-                return;
-            }
-            if (value > Coords[Coords.Count - 1])
-            {
-                ModePoint = ModePoint.Right;
-                PreviousMark = Labels[Coords.Count - 1];
-                PreviousDistance = value - Coords[Coords.Count - 1];
-                NextMark = string.Empty;
-                NextDistance = 0;
-                CurrentMark = string.Empty;
-                return;
-            }
-            for (int i = 0; i <= Coords.Count - 1; i++)
-            {
-                if (value == Coords[i])
-                {
-                    ModePoint = ModePoint.Border;
-                    if (i == 0)
-                    {
-                        PreviousMark = string.Empty;
-                        PreviousDistance = 0;
-
-                        NextMark = Labels[1];
-                        NextDistance = Coords[1] - value;
-
-                        CurrentMark = Labels[0];
-                        return;
-                    }
-                    else if (i == Coords.Count - 1)
-                    {
-                        PreviousMark = Labels[Coords.Count - 2];
-                        PreviousDistance = value - Coords[Coords.Count - 2];
-
-                        CurrentMark = Labels[Coords.Count - 1];
-                        NextMark = string.Empty;
-                        NextDistance = 0;
-                        return;
-                    }
-                    else
-                    {
-                        PreviousMark = Labels[i - 1];
-                        PreviousDistance = value - Coords[i - 1];
-                        NextMark = Labels[i + 1];
-                        NextDistance = Coords[i + 1] - value;
-                        CurrentMark = Labels[i];
-                        return;
-                    }
-                }
-                else if (value > Coords[i] && value < Coords[i + 1])
-                {
-                    ModePoint = ModePoint.BetweenBorder;
-                    PreviousMark = Labels[i];
-                    PreviousDistance = value - Coords[i];
-                    NextMark = Labels[i + 1];
-                    NextDistance = Coords[i + 1] - value;
-                    return;
-                }
-            }
-
-        }
+        
 
         private void InsertDimension(TSG.Point point1, TSG.Point point2, string nameAttr)
         {

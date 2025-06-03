@@ -38,6 +38,9 @@ namespace Jungle_WPF_Plugins_DrawingTools.NeighborAxis.Classes
                 TSD.Text text = new TSD.Text(view, point, label);
                 TSD.Text.TextAttributes textAttributes = new TSD.Text.TextAttributes();
                 textAttributes.Font = new TSD.FontAttributes(colorFont, heightFont, fontName, italicFont, boldFont);
+                textAttributes.Frame = new TSD.Frame(TSD.FrameTypes.None, TSD.DrawingColors.Red);
+                textAttributes.ArrowHead = new TSD.ArrowheadAttributes(TSD.ArrowheadPositions.None, TSD.ArrowheadTypes.NoArrow, 1, 1);
+
                 text.Attributes = textAttributes;
                 text.Insert();
                 text.Modify();
